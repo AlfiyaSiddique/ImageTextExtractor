@@ -3,16 +3,19 @@ const multer = require("multer");
 const cors = require("cors")
 const app = express();
 const Tesseract = require('tesseract.js');
+const path = require("path");
+const fs = require("fs");
 
 app.use(cors())
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(__dirname + "/public"));
 app.set('view engine', 'ejs');
+app.set("views", path.join(__dirname, "views"))
+app.use("/assets", express.static('assets'));
 const upload = multer({ dest: 'uploads/' })
 
 app.get("/", (req, res) => {
-  res.render("index", {text: ""})
+  res.render("index", {text: false})
 })
 
 app.post("/api/fileanalyse", upload.single("upfile"), (req, res) => {
@@ -42,4 +45,20 @@ app.post("/api/fileanalyse", upload.single("upfile"), (req, res) => {
 
 })
 
-app.listen(80, () => console.log("server is running at port 80"));
+app.listen(80, ()=>{
+  const directoryPath  = __dirname+"/uploads";
+  fs.readdir(directoryPath, (err, files)=>{
+    if(err){
+      console.log(err);
+      return ;
+    }
+
+    files.forEach((file)=>{
+      const filePath = path.join(__dirname,"/uploads/", file);
+      fs.unlink(filePath, (err)=>{
+        if (err) {console.log(err); return;};
+      })
+    })
+  })
+ console.log("Server is running")
+});

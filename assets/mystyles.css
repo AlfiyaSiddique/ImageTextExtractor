@@ -1,0 +1,61 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+min-width: 100vw;
+max-width: 1280px;
+height: 100vh;
+margin: auto;
+overflow: hidden;
+}
+
+main{
+    width: 90vw;
+    height: 100vh;
+    text-align: center;
+}
+
+form{
+    height: 20vh;
+    text-align: center;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+#textbox{
+    height: 40vh;
+    overflow-y: scroll;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+input::file-selector-button {
+   background-color: #3b0764;
+   font-weight:400;
+    color: white;
+    padding: 0.5em;
+    border: thin solid grey;
+    border-radius: 5px;
+    outline: none;
+}
+
+input::file-selector-button:hover{
+    background-color: #6b21a8;
+    cursor: pointer;
+}
+
+footer{
+    width: 100vw;
+}
+
+#selected_image{
+    width: 400px;
+    height: 400px;
+}
+
+@media(max-width: 400px){
+    main{
+        width: 98vw;
+    }
+}

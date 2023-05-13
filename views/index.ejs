@@ -4,17 +4,37 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../assets/favicon.ico">
+    <link rel="stylesheet" href="../assets/styles.css">
+    <link rel="stylesheet" href="../assets/mystyles.css">
     <title>Image Extractor</title>
 </head>
-<body>
-    <h1>Hello World</h1>
-      <form enctype="multipart/form-data" method="POST" action="/api/fileanalyse">
-            <input id="inputfield" type="file" name="upfile">
-            <input id="button" type="submit" value="Upload">
+<body class="p-5 bg-purple-100">
+  <main class="p-8 m-auto">
+    <div>
+      <h1 class="mb-10 text-5xl font-serif font-bold text-purple-950">Image-Text Extractor</h1>
+      <form class="pt-8 bg-white rounded-lg" enctype="multipart/form-data" method="POST" action="/api/fileanalyse">
+            <input  id="inputfield" type="file" name="upfile" >
+            <input  id="button" type="submit" value="Upload" class="focus:outline-none text-white bg-purple-950 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900 hover:cursor-pointer">
           </form>
+    </div>
 
-          <div id="textbox">
-            <p><%= text %></p>
-          </div>
+        <div id="textbox" class="bg-white mt-7 pt-12 rounded-lg">
+
+          <% if(text){ %>
+          <p class="text-xl" id="extractedText">
+            <%=text%>
+          </p>
+          <% }else{ %>
+            <p class="text-4xl text-gray-300 ">Extracted Text Appear Here</p>
+            <% } %>
+          <button type="button" class="my-6 focus:outline-none text-white bg-purple-950 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900" id="copy" onclick="copyText()">Copy</button>
+        </div>
+  </main>
+  <footer class="absolute bottom-0 left-0 bg-purple-950 text-white p-3 flex justify-between">
+   <p>CreatedBy@Alfiya</p>
+   <button class="bg-white text-purple-950 px-5 py-1 rounded-lg" type="button"><a href="https://github.com/AlfiyaSiddique/ImageTextExtractor" target="_blank">Contribute</a></button>
+  </footer>
+  <script src="../assets/index.js"></script>
 </body>
 </html>
