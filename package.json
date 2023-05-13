@@ -4,7 +4,7 @@
   "description": "An application that extracts text from image",
   "scripts": {
     "dev": "vite",
-    "start": "nodemon server.js",
+    "start": "node server.js",
     "build-tail": "tailwindcss build -i styles/tailwind.css -o assets/styles.css"
   },
   "author": "Alfiya Siddique",
